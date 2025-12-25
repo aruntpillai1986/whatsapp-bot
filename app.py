@@ -3,7 +3,7 @@ from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
 # Load CSV and clean roll numbers
-df = pd.read_csv("students.csv", dtype=str)   # force all as strings
+df = pd.read_csv("students_s2.csv", dtype=str)   # force all as strings
 df['roll_number'] = df['roll_number'].str.strip().str.lstrip("0")  # remove spaces & leading zeros
 roll_to_name = dict(zip(df['roll_number'], df['name']))
 
@@ -25,3 +25,4 @@ def whatsapp_bot():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
+
